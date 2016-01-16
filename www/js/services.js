@@ -96,6 +96,7 @@ angular.module('starter.services', []).factory('Chats', function() {
 			return tags[tag];
 		},
 		sumTags : function() {
+			console.log("sumTags");
 			dic = {};
 			sessions.forEach(function(session){
 				dic[session.tag] = dic[session.tag] || {tag:session.tag, time:0};

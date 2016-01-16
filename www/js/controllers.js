@@ -9,6 +9,9 @@ angular.module('starter.controllers', []).controller('DashCtrl', function($scope
 		Sessions.start();
 		$state.go('tab.session');
 	};
+	
+	hourgraph([]);
+	
 }).controller('SessionLiveCtrl', function($scope, $state, Sessions) {
 	if (!Sessions.is_live()) {
 		$state.go('tab.dash');
@@ -25,16 +28,13 @@ angular.module('starter.controllers', []).controller('DashCtrl', function($scope
 		console.log(tag);
 		$state.go('tab.dash');
 	};
-}).controller('TagsCtrl', function($scope, Sessions) {
-	$scope.init = function() {
-		console.log("-------------------");
-		$scope.tags = Sessions.sumTags().map(function(t) {
+}).controller('TagsCtrl', function($scope, $state, Sessions) {
+	$scope.tags = Sessions.sumTags().map(function(t) {
 			t.time = Math.round(t.time / (100 * 60 * 60)) / 10;
 			return t;
 		});
-		//{tag:t.tag,time: Math.round(t.time/(100*60*60))/10 ,color:t.color
-	};
 	//$scope.init();
+	console.log("!!!!!!!!!!!!");
 
 }).controller('TagDetailCtrl', function($scope, $stateParams, Sessions) {
 	$scope.sessions = Sessions.listByTag($stateParams.tag);
