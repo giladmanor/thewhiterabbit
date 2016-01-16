@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
 	$scope.tags = Sessions.tags();
 	console.log("tags",$scope.tags);
 	$scope.stop=function(d){
-		tag = d || $scope.session.tag;
+		tag = (d ? d.tag : null) || $scope.session.tag;
 		Sessions.stop(tag);
 		console.log(tag);
 		$state.go('tab.dash');
@@ -30,7 +30,9 @@ angular.module('starter.controllers', [])
 
 .controller('TagsCtrl', function($scope, Sessions) {
   
-  $scope.tags = Sessions.sumTags().map(function(t){return {tag:t.tag,time: Math.round(t.time/(100*60*60))/10 ,color:t.color};});
+  $scope.tags = Sessions.sumTags().map(function(t){
+  	t.time=Math.round(t.time/(100*60*60))/10;
+  	return t;});//{tag:t.tag,time: Math.round(t.time/(100*60*60))/10 ,color:t.color}
   
 })
 

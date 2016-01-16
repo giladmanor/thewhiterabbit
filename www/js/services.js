@@ -47,8 +47,8 @@ angular.module('starter.services', []).factory('Chats', function() {
 	};
 }).factory('Sessions', function() {
 	// init session table
-	//localStorage.tags = "{}";
-	//localStorage.sessions = "[]";
+	// localStorage.tags = "{}";
+	// localStorage.sessions = "[]";
 	
 	console.log("init",localStorage.tags);
 	console.log("init",localStorage.sessions);
