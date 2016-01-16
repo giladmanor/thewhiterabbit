@@ -1,0 +1,25 @@
+<ion-view view-title="Stop Session">
+
+	<ion-content>
+
+		<ion-list>
+			<ion-item class="item-remove-animate item-icon-right" ng-repeat="tag in tags" type="item-text-wrap"  ng-style="{'background-color': tag.color}">
+				<span>{{tag.tag}}</span>
+
+				<ion-button class="session-stop-btn button pull-right" ng-click="stop(tag)">
+					Stop
+				</ion-button>
+			</ion-item>
+
+			<ion-item class="item-remove-animate item-icon-right" type="item-text-wrap" >
+				<input ng-model="session.tag"/>
+				
+
+				<ion-button class="session-stop-btn button pull-right" ng-click="stop()">
+					Tag & Stop
+				</ion-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+
+</ion-view>

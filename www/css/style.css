@@ -1,0 +1,56 @@
+/* Empty. Add your own CSS if you like */
+.pull-right{
+	float:right;
+}
+
+.bar .title{
+	//background-color: #2F6FAD;
+	color: #dadada;
+}
+
+
+.session-start-btn{
+	width: 100%;
+	background-color: #2F6FAD;
+	color: #dadada;
+	padding:1em;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.session-stop-btn{
+	background-color: #2F6FAD;
+	color: #dadada;
+	padding:1em;
+	margin-right:-2em;
+	
+}
+
+.tag-item{
+	box-shadow:inset 0px 0px 5px #333;
+	background-color: #fff;
+	padding: 0.2em;
+	padding-left:0.4em;
+	margin-bottom:-0.8em;;
+}
+
+.item .item-content {
+  background-color: transparent !important;
+}
+
+.activity-graph{
+	position:absolute;
+	bottom: 4em;
+	left:0;
+	right:0;
+	height:20em;
+	background-color: #999;
+}
+
+.tag-title{
+	padding:1em;
+}
+
+.tag-title input{
+	margin-top:-0.4em;
+}
