@@ -10,7 +10,7 @@ angular.module('starter.controllers', []).controller('DashCtrl', function($scope
 		$state.go('tab.session');
 	};
 	
-	hourgraph([]);
+	hourgraph(Sessions.getGraphData());
 	
 }).controller('SessionLiveCtrl', function($scope, $state, Sessions) {
 	if (!Sessions.is_live()) {

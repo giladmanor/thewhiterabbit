@@ -1,11 +1,12 @@
 var hourgraph = function(data) {
+	
 	var margin = {
-		top : 50,
+		top : 20,
 		right : 0,
 		bottom : 100,
 		left : 30
 	},
-	    width = 660 - margin.left - margin.right,
+	    width = 410 - margin.left - margin.right,
 	    height = 430 - margin.top - margin.bottom,
 	    gridSize = Math.floor(width / 24),
 	    legendElementWidth = gridSize * 2,
@@ -51,7 +52,7 @@ var hourgraph = function(data) {
 		}).attr("rx", 4).attr("ry", 4).attr("class", "hour bordered").attr("width", gridSize).attr("height", gridSize).style("fill", colors[0]);
 
 		cards.transition().duration(1000).style("fill", function(d) {
-			return colorScale(d.value);
+			return d.value;
 		});
 
 		cards.select("title").text(function(d) {
