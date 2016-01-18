@@ -9,17 +9,24 @@ angular.module('starter.controllers', []).controller('DashCtrl', function($scope
 		Sessions.start();
 		$state.go('tab.session');
 	};
-	
+
 	hourgraph(Sessions.getGraphData());
-	
-}).controller('SessionLiveCtrl', function($scope, $state, Sessions) {
+
+}).controller('SessionLiveCtrl', function($scope, $state, $interval, Sessions) {
 	if (!Sessions.is_live()) {
 		$state.go('tab.dash');
 	}
+	$scope.session = Sessions.current();
+	$scope.session.tag = "";
 
-	$scope.session = {
-		tag : ""
+	var tick = function() {
+		$scope.hours = Math.round((Date.now() - $scope.session.start) / (1000 * 60 * 60));
+		$scope.minutes = Math.round((Date.now() - $scope.session.start ) / (1000 * 60) - $scope.hours * 60);
+		$scope.seconds = Math.round((Date.now() - $scope.session.start  ) / (1000) - $scope.minutes * 60);
 	};
+
+	$interval(tick, 1000);
+
 	$scope.tags = Sessions.tags();
 	console.log("tags", $scope.tags);
 	$scope.stop = function(d) {
@@ -30,9 +37,9 @@ angular.module('starter.controllers', []).controller('DashCtrl', function($scope
 	};
 }).controller('TagsCtrl', function($scope, $state, Sessions) {
 	$scope.tags = Sessions.sumTags().map(function(t) {
-			t.time = Math.round(t.time / (100 * 60 * 60)) / 10;
-			return t;
-		});
+		t.time = Math.round(t.time / (100 * 60 * 60)) / 10;
+		return t;
+	});
 	//$scope.init();
 	console.log("!!!!!!!!!!!!");
 

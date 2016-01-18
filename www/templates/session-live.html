@@ -1,7 +1,9 @@
 <ion-view view-title="Stop Session" >
-
+	
 	<ion-content>
-
+		<ion-item >
+			<div class="time-view">{{ hours }}:{{ minutes }}:{{ seconds }}</div>
+		</ion-item>
 		<ion-list>
 			<ion-item class=" item-icon-right" ng-repeat="tag in tags" type="item-text-wrap"  ng-style="{'background-color': tag.color}">
 				<span>{{tag.tag}}</span>

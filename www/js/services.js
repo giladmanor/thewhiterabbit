@@ -13,7 +13,9 @@ angular.module('starter.services', []).factory('Sessions', function() {
 			localStorage.tags = JSON.parse( "{}");
 			localStorage.sessions = JSON.parse( "[]");
 		},
-		
+		current:function(){
+			return sessions[sessions.length-1];
+		},
 		is_live:function(){
 			return sessions[sessions.length-1]!=null && ((sessions[sessions.length-1].stop || -1) <0);
 		},
