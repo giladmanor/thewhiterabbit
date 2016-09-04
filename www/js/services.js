@@ -85,9 +85,16 @@ angular.module('starter.services', []).factory('Sessions', function() {
 			i=sessions.length-1;
 			
 			while(sessions[i] && sessions[i].start-weekago>0){
-				d = new Date(sessions[i].start);
-				console.log(">",d.getDay()+1,d.getHours());
-				data[d.getDay()+1][d.getHours()] =tags[sessions[i].tag].color || "#fff"; 
+				d1 = new Date(sessions[i].start);
+				d2 = new Date(sessions[i].stop);
+				console.log(">",d1.getDay(),d1.getHours(),"::",d2.getHours());
+				timeCounter = d1.getHours();
+				color=tags[sessions[i].tag].color || "#fff";
+				while(timeCounter<=d2.getHours()){
+					data[d1.getDay()][timeCounter] =color;
+					timeCounter++;
+				}
+				 
 				i--;
 			}
 			

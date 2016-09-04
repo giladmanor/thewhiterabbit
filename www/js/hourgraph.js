@@ -1,12 +1,12 @@
-var hourgraph = function(data) {
+var hourgraph = function(window,data) {
 	
 	var margin = {
 		top : 20,
-		right : 0,
-		bottom : 100,
+		right : 10,
+		bottom : 10,
 		left : 30
 	},
-	    width = 410 - margin.left - margin.right,
+	    width = window.innerWidth - margin.left - margin.right,
 	    height = 430 - margin.top - margin.bottom,
 	    gridSize = Math.floor(width / 24),
 	    legendElementWidth = gridSize * 2,
@@ -49,10 +49,10 @@ var hourgraph = function(data) {
 			return (d.hour - 1) * gridSize;
 		}).attr("y", function(d) {
 			return (d.day - 1) * gridSize;
-		}).attr("rx", 4).attr("ry", 4).attr("class", "hour bordered").attr("width", gridSize).attr("height", gridSize).style("fill", colors[0]);
+		}).attr("rx", 4).attr("ry", 4).attr("class", "hour bordered").attr("width", gridSize).attr("height", gridSize).style("fill", "#fff");
 
 		cards.transition().duration(1000).style("fill", function(d) {
-			return d.value;
+			return d.value || "#eee";
 		});
 
 		cards.select("title").text(function(d) {
@@ -87,7 +87,7 @@ var hourgraph = function(data) {
 	var datasetpicker = d3.select("#dataset-picker").selectAll(".dataset-button").data(datasets);
 
 	datasetpicker.enter().append("input").attr("value", function(d) {
-		return "Dataset " + d
+		return "Dataset " + d;
 	}).attr("type", "button").attr("class", "dataset-button").on("click", function(d) {
 		heatmapChart(d);
 	});
